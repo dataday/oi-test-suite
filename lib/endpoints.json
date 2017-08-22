@@ -1,0 +1,15 @@
+{
+  "agent": "Agent String",
+  "version": "0.1.0",
+  "content_type": "application/json",
+  "environments": ["www", "test", "live"],
+  "endpoints": {
+    "project_one": "http://$sub.sandbox.co.uk:8080",
+    "project_two": "https://$sub.sandbox.co.uk:8443"
+  },
+  "flagpole": null,
+  "build": null,
+  "runbook": null,
+  "guide": null,
+  "suite": null
+}

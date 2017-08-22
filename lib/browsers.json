@@ -1,0 +1,32 @@
+{
+  "milestone": 1,
+  "browsers": [
+    {
+      "name": "firefox",
+      "js": true
+    },
+    {
+      "name": "chrome",
+      "js": true
+    },
+    {
+      "name": "poltergeist",
+      "js": true,
+      "options": {
+        "phantomjs_options": ["--config=./lib/phantomjs.json"]
+      }
+    },
+    {
+      "name": "grid",
+      "options": {
+        "browser": "remote",
+        "url": "http://localhost:4444/wd/hub"
+      }
+    },
+    {
+      "name": "ie",
+      "selector": "css",
+      "js": false
+    }
+  ]
+}

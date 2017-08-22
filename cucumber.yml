@@ -1,0 +1,9 @@
+poltergeist: BROWSER=poltergeist
+firefox: BROWSER=firefox
+chrome: BROWSER=chrome
+ie: BROWSER=ie
+opera: BROWSER=opera
+
+default: --profile acceptance --profile report --format pretty BROWSER=poltergeist
+acceptance: --tags ~@manual --tags ~@disabled --tags ~@todo
+report: --format progress --format html --out app/reports/results.html

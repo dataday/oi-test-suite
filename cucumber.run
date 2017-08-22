@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# Author: [dataday](http://github.com/dataday)
+
+# mac os = brew install coreutils for 'greadlink -f'
+# unless you have realpath installed already
+export X_SELF=$(realpath -L ${0#./})
+export X_HOME="${X_SELF%/*}"
+
+export "ENV=${ENV:-www}"
+export "BROWSER=${BROWSER:-poltergeist}"
+export "PROXY=${PROXY:-true}"
+
+PREFIX="features/"
+ENDPOINTS="./lib/endpoints.json"
+
+export PROJECT=${1:-project-all}
+export PROJECT_NAME=${PROJECT#$PREFIX}
+
+function run () {
+  local prefix="$1"
+  local project="$2"
+  local base="$3"
+
+  # DISABLED remove previous results prior to running again
+  rm -f $base/app/reports/${project#$PREFIX}-results.html
+
+  # install local dependancies
+  bundle install --path $X_HOME/vendor/bundle --binstubs
+
+  # requires core support files
+  bundle exec cucumber --require features/support --require $project $project
+
+  mv $base/app/reports/results.html $base/app/reports/${project#$prefix}-results.html
+}
+
+# safe execution of known projects.
+# will run each project in listed
+# as a valid project endpoint
+function run_project () {
+  $(echo cat $1) | python -c "
+import json,os,sys,subprocess;
+obj = json.load(sys.stdin);
+cmd = os.environ['X_SELF'];
+for name in obj['endpoints']:
+  project = 'features/{0}'.format(name).replace('_', '-')
+  subprocess.call([cmd, project])"
+  exit 1
+}
+
+# capture unspecified project runs
+if [[ $PROJECT_NAME =~ ^project-all$ ]]; then
+  echo "-> RUNNING ALL"
+  run_project $ENDPOINTS
+else
+  # init
+  echo "-> RUNNING $PROJECT_NAME"
+  run $PREFIX $PROJECT $X_HOME
+fi
+
+unset X_HOME
+unset X_SELF

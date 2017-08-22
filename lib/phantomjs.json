@@ -1,0 +1,11 @@
+{
+  "debug": false,
+  "inspector": false,
+  "cookiesFile": "./app/cookies.txt",
+  "diskCache": false,
+  "loadImages": false,
+  "outputEncoding": "utf8",
+  "scriptEncoding": "utf8",
+  "webSecurity": true,
+  "localStorage": "./app/storage.txt"
+}

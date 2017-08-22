@@ -1,0 +1,12 @@
+{
+  "services": {
+    "service_id_01": "service_name_01",
+    "service_id_02": "service_name_02",
+    "service_id_03": "service_name_03",
+    "service_id_04": "service_name_04",
+    "service_id_05": "service_name_05",
+    "service_id_06": "service_name_06",
+    "service_id_07": "service_name_07",
+    "service_id_08": "service_name_08"
+  }
+}

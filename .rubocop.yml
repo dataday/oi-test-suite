@@ -1,0 +1,32 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.2
+  Exclude:
+    - 'bin/*'
+    - 'vendor/**/*'
+
+Lint/UnusedBlockArgument:
+  Enabled: false
+
+LineLength:
+  Enabled: true
+  Max: 130
+
+Metrics/MethodLength:
+  Max: 25
+
+ClassLength:
+  Max: 130
+
+# features/support/step_helpers.rb:26:3
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+# features/support/app.rb:119:5
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# features/support/app.rb:119:5
+Metrics/AbcSize:
+  Max: 30

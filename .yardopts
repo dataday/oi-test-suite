@@ -1,0 +1,11 @@
+--readme README.md
+--title 'ruby-testsuite'
+--charset utf-8
+--markup markdown
+--exclude /spec/ --exclude /bin/ --exclude /vendor/ --exclude /app/
+--embed-mixin ClassMethods
+-
+features/support/app.rb
+features/support/step_helpers.rb
+features/support/web_steps.rb
+LICENSE
